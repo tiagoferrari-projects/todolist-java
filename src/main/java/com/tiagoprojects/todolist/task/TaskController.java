@@ -1,6 +1,6 @@
 package com.tiagoprojects.todolist.task;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -31,7 +31,7 @@ public class TaskController {
         var idUser = request.getAttribute("idUser");
         taskModel.setIdUser((UUID)idUser);
 
-        var currentDate = LocalDate.now();
+        var currentDate = LocalDateTime.now();
         if(currentDate.isAfter(taskModel.getStartAt()) || currentDate.isAfter(taskModel.getEndAt())){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
             .body("A data de início ou a data de término deve ser maior do que a data atual");
